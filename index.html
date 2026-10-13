@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="fonts.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="hero__grain"></div>
+    <p class="hero__kicker">Rutina de hoy: presumir lo increible que eres</p>
+    <h1 class="hero__title">
+      <span class="hero__title-line">Esto es para</span>
+      <span class="hero__title-name" data-slot="nombre">Jennifer</span>
+    </h1>
+    <p class="hero__sub">
+      Una página hecha a mano (bueno, a teclado)
+    </p>
+    <a href="#stats" class="hero__scroll" aria-label="Bajar a la siguiente sección">
+      <span>Sigue bajando</span>
+      <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7 1V19M7 19L1 13M7 19L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <!-- barra olímpica como divisor / barra de progreso de scroll -->
+    <svg class="barbell" viewBox="0 0 1000 90" preserveAspectRatio="none" aria-hidden="true">
+      <rect class="barbell__bar" x="0" y="40" width="1000" height="10" />
+      <g class="barbell__plate-set" data-side="left">
+        <rect class="barbell__plate" x="40"  y="10" width="20" height="70" rx="6"/>
+        <rect class="barbell__plate" x="70"  y="20" width="16" height="50" rx="6"/>
+      </g>
+      <g class="barbell__plate-set" data-side="right">
+        <rect class="barbell__plate" x="940" y="10" width="20" height="70" rx="6"/>
+        <rect class="barbell__plate" x="914" y="20" width="16" height="50" rx="6"/>
+      </g>
+    </svg>
+  </header>
+
+  <!-- ===================== STATS ===================== -->
+  <section class="stats" id="stats">
+    <h2 class="section-title">Lo que cargas todos los días</h2>
+    <p class="section-lead">Valores y virtudes que solo vos tenes:</p>
+
+    <div class="stat-list" id="statList">
+      <!-- las barras se generan dinámicamente desde script.js (CONFIG.stats) -->
+    </div>
+  </section>
+
+  <!-- ===================== FRASES ===================== -->
+  <section class="quotes">
+    <div class="chalkboard">
+      <div class="chalkboard__clip"></div>
+      <p class="chalkboard__quote" id="quoteText">Cargando frase...</p>
+      <button class="btn btn--chalk" id="quoteBtn">Otra frase</button>
+    </div>
+  </section>
+
+  <!-- ===================== RETO / REPS ===================== -->
+  <section class="reto">
+    <h2 class="section-title section-title--light">El reto del día</h2>
+    <p class="section-lead">Cada clic es una repetición. A ver hasta dónde llegas.</p>
+
+    <div class="rep-counter">
+      <div class="rep-counter__display">
+        <span class="rep-counter__number" id="repNumber">0</span>
+        <span class="rep-counter__label">reps</span>
+      </div>
+
+      <div class="rep-counter__plates" id="repPlates" aria-hidden="true"></div>
+
+      <button class="btn btn--rep" id="repBtn">+1 rep</button>
+      <p class="rep-counter__msg" id="repMsg">&nbsp;</p>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <script src="script.js"></script>
+  <script src="menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La fórmula</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=JetBrains+Mono:wght@500;700&family=Work+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="manera.css">
+<link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <p class="hero__kicker">Ecuación #1 &middot; ya demostrada</p>
+    <h1 class="hero__title">Hay una fórmula que no falla</h1>
+    <p class="hero__sub">La dejo aquí firmada, por si alguna vez dudas.</p>
+  </header>
+
+  <!-- ===================== ECUACIÓN ===================== -->
+  <section class="formula">
+    <div class="formula__card">
+      <p class="formula__eq">x² + (y &minus; ∛(x²))² = 1</p>
+    </div>
+    <p class="formula__note">psst: funciona para toda x entre &minus;1 y 1</p>
+    <button class="btn btn--graph" id="graphBtn">Graficar</button>
+  </section>
+
+  <!-- ===================== GRÁFICA ===================== -->
+  <section class="heart-plot">
+    <svg id="heartSvg" viewBox="-1.6 -1.6 3.2 3.2" class="heart-plot__svg" aria-label="Gráfica de la ecuación, con forma de corazón">
+      <line class="heart-plot__axis" x1="-1.6" y1="0" x2="1.6" y2="0"/>
+      <line class="heart-plot__axis" x1="0" y1="-1.6" x2="0" y2="1.6"/>
+      <path id="heartPath" class="heart-plot__path"/>
+    </svg>
+    <p class="heart-plot__caption" id="plotCaption">&nbsp;</p>
+  </section>
+
+  <!-- ===================== NOSOTROS ===================== -->
+  <section class="together">
+    <figure class="photo-frame">
+      <div class="photo-frame__inner">
+        <img class="photo-frame__img" src="nosotros.jpeg" alt="Foto de los dos juntos">
+        <div class="photo-frame__placeholder">
+          <svg viewBox="0 0 40 40" class="photo-frame__icon" aria-hidden="true">
+            <path d="M20 32 C8 24 4 16 10 10 C14 6 20 8 20 14 C20 8 26 6 30 10 C36 16 32 24 20 32Z"/>
+          </svg>
+          <span>Sube aquí la foto de los dos</span>
+        </div>
+      </div>
+      <figcaption id="togetherCaption">Nosotros, graficados</figcaption>
+    </figure>
+
+    <p class="together__message" id="togetherMessage"></p>
+  </section>
+
+  <footer class="footer">
+    <p>Con amor, Andres</p>
+  </footer>
+
+  <script src="manera.js"></script>
+  <script src="menu.js"></script>
+</body>
+</html>

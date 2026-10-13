@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reproductor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Soundtrack.css">
+<link rel="stylesheet" href="menu.css">
+</head>
+<body>
+
+
+
+  <header class="hero">
+    <p class="hero__kicker">(Especial Edicion)</p>
+    <h1 class="hero__title">Jennifer's Playlist</h1>
+  </header>
+
+  <main class="playlist-section">
+    <div class="playlist" id="playlist">
+      <!-- las filas se generan desde CONFIG.canciones en reproductor.js -->
+    </div>
+  </main>
+
+  <!-- ===================== BARRA DE REPRODUCCIÓN ===================== -->
+  <div class="now-playing-bar" id="nowPlayingBar">
+
+    <div class="now-playing-bar__track">
+      <div class="now-playing-bar__disc" id="disc">
+        <img id="discImg" class="now-playing-bar__disc-img" src="" alt="" hidden>
+      </div>
+      <div class="now-playing-bar__meta">
+        <p class="now-playing-bar__title" id="trackTitle">Elige una canción</p>
+        <p class="now-playing-bar__artist" id="trackArtist">&nbsp;</p>
+      </div>
+      <div class="equalizer" id="equalizer" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <div class="now-playing-bar__center">
+      <div class="now-playing-bar__buttons">
+        <button class="ctrl ctrl--small" id="prevBtn" aria-label="Canción anterior">
+          <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zM20 6v12L9 12z"/></svg>
+        </button>
+        <button class="ctrl ctrl--play" id="playBtn" aria-label="Reproducir">
+          <svg id="iconPlay" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          <svg id="iconPause" viewBox="0 0 24 24" hidden><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        </button>
+        <button class="ctrl ctrl--small" id="nextBtn" aria-label="Siguiente canción">
+          <svg viewBox="0 0 24 24"><path d="M16 6h2v12h-2zM4 6v12l11-6z"/></svg>
+        </button>
+      </div>
+
+      <div class="now-playing-bar__progress">
+        <span class="time" id="currentTime">0:00</span>
+        <input type="range" id="seekBar" class="seek" min="0" max="100" value="0" step="0.1">
+        <span class="time" id="durationTime">0:00</span>
+      </div>
+    </div>
+
+    <div class="now-playing-bar__volume">
+      <svg viewBox="0 0 24 24" class="volume-icon"><path d="M4 9v6h4l5 5V4L8 9H4zM16.5 12a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+      <input type="range" id="volumeBar" class="volume" min="0" max="100" value="80">
+    </div>
+  </div>
+
+  <audio id="audioPlayer" preload="metadata"></audio>
+
+  <script src="Soundtrack.js"></script>
+  <script src="menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Nuestra galaxia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="galaxia.css">
+<link rel="stylesheet" href="menu.css">
+</head>
+<body class="galaxia">
+
+  <!-- escena 3D -->
+  <canvas id="escena"></canvas>
+
+  <!-- HUD -->
+  <div class="hud">
+    <p class="hud__title" id="hudTitle">Nuestra galaxia</p>
+    <p class="hud__count" id="contador">0 / 0 orbes</p>
+    <button class="hud__gyro" id="gyroBtn" type="button" hidden>Giroscopio: no</button>
+  </div>
+
+  <p class="hint" id="hint"></p>
+
+  <!-- pantalla de entrada -->
+  <div class="intro" id="intro">
+    <div class="intro__box">
+      <p class="intro__kicker">Una pequeña galaxia, hecha para ti</p>
+      <h1 class="intro__title">Nuestra <span>galaxia</span></h1>
+      <p class="intro__text" id="introText">
+        Mira a tu alrededor y toca los orbes que brillan.
+        Cada uno guarda algo que quería decirte.
+      </p>
+      <div class="intro__buttons">
+        <button class="btn btn--main" id="entrarBtn" type="button">Entrar</button>
+        <button class="btn btn--ghost" id="entrarGiroBtn" type="button" hidden>Entrar con giroscopio</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- tarjeta que aparece al enfocar un orbe -->
+  <aside class="panel" id="panel" hidden aria-live="polite">
+    <p class="panel__tag" id="panelTag"></p>
+    <h2 class="panel__title" id="panelTitle"></h2>
+    <p class="panel__artist" id="panelArtist" hidden></p>
+    <p class="panel__text" id="panelText"></p>
+    <div class="panel__actions">
+      <a class="panel__link" id="panelLink" href="#" hidden>Escuchar</a>
+      <button class="panel__btn" id="panelClose" type="button">Volver al espacio</button>
+    </div>
+  </aside>
+
+  <!-- aviso si no hay WebGL / no cargó Three.js -->
+  <p class="error" id="error" hidden></p>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="galaxia.js"></script>
+  <script src="menu.js"></script>
+</body>
+</html>

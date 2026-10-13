@@ -1,0 +1,252 @@
+/* =========================================================
+   TOKENS — papel cuadriculado + tinta azul + corazón carmín
+========================================================= */
+:root{
+  --paper:      #F5F3EC;
+  --grid-line:  rgba(60,80,140,0.12);
+  --ink:        #2B3A67;
+  --ink-soft:   #5B6690;
+  --heart:      #E8405F;
+  --heart-deep: #B5243F;
+
+  --font-display: "Work Sans", sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+  --font-hand:    "Caveat", cursive;
+
+  --menu-accent: var(--heart);
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.6;
+  background:
+    linear-gradient(var(--grid-line) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px) 0 0 / 28px 28px,
+    var(--paper);
+}
+
+:focus-visible{
+  outline: 2px solid var(--heart);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+.btn{
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85em 1.7em;
+  border-radius: 999px;
+  transition: transform 0.15s ease;
+}
+.btn:hover{ transform: translateY(-2px); }
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero{
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 9vh 6vw 4vh;
+  text-align: center;
+}
+
+.hero__kicker{
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--heart-deep);
+  margin: 0 0 1rem;
+}
+
+.hero__title{
+  font-size: clamp(1.9rem, 5vw, 2.8rem);
+  margin: 0 0 0.6rem;
+  line-height: 1.2;
+}
+
+.hero__sub{
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+/* =========================================================
+   ECUACIÓN
+========================================================= */
+.formula{
+  text-align: center;
+  padding: 2vh 6vw 6vh;
+}
+
+.formula__card{
+  display: inline-block;
+  background: #FFFEFA;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: 1.6rem 2.4rem;
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.formula__eq{
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 4vw, 2rem);
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+.formula__note{
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+  margin: 1.1rem 0 1.6rem;
+}
+
+.btn--graph{
+  background: var(--heart);
+  color: #fff8f6;
+}
+.btn--graph:hover{ background: var(--heart-deep); }
+
+/* =========================================================
+   GRÁFICA
+========================================================= */
+.heart-plot{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vh 6vw 8vh;
+}
+
+.heart-plot__svg{
+  width: min(360px, 80vw);
+  height: min(360px, 80vw);
+}
+
+.heart-plot__axis{
+  stroke: var(--ink-soft);
+  stroke-width: 0.012;
+  opacity: 0.35;
+}
+
+.heart-plot__path{
+  fill: var(--heart);
+  fill-opacity: 0;
+  stroke: var(--heart);
+  stroke-width: 0.03;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  transition: fill-opacity 0.8s ease;
+}
+
+.heart-plot__path.is-filled{
+  fill-opacity: 0.92;
+  animation: latido 1.8s ease-in-out 0.3s 2;
+}
+
+@keyframes latido{
+  0%, 100%{ transform: scale(1); }
+  15%{ transform: scale(1.06); }
+  30%{ transform: scale(1); }
+}
+
+.heart-plot__caption{
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  color: var(--heart-deep);
+  margin: 1.2rem 0 0;
+  min-height: 1.4em;
+}
+
+/* =========================================================
+   NOSOTROS / FOTO
+========================================================= */
+.together{
+  text-align: center;
+  padding: 2vh 6vw 10vh;
+}
+
+.photo-frame{
+  width: 220px;
+  margin: 0 auto 1.4rem;
+  background: #FFFEFA;
+  border: 9px solid #FFFEFA;
+  border-radius: 10px;
+  box-shadow: 0 22px 40px -22px rgba(43,58,103,0.35);
+  transform: rotate(-2deg);
+}
+
+.photo-frame__inner{
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+.photo-frame__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-frame__placeholder{
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  text-align: center;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  background: rgba(43,58,103,0.05);
+  border: 2px dashed rgba(43,58,103,0.25);
+}
+.photo-frame__img[hidden] + .photo-frame__placeholder{ display: flex; }
+
+.photo-frame__icon{
+  width: 28px;
+  height: 28px;
+  fill: var(--heart);
+}
+
+.photo-frame figcaption{
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--ink-soft);
+  margin-top: 0.5rem;
+}
+
+.together__message{
+  max-width: 48ch;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer{
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}

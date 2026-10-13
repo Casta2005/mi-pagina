@@ -1,0 +1,309 @@
+/* =========================================================
+    — paleta cálida, flor amarilla + shih tzu
+========================================================= */
+:root{
+  --cream:      #FFF6E0;
+  --petal:      #FFD400;
+  --petal-deep: #F5A623;
+  --leaf:       #6B8F47;
+  --fur:        #EFD9B4;
+  --fur-shadow: #C9A66B;
+  --bow:        #E85D75;
+  --ink:        #4A3423;
+  --ink-soft:   #7A5C42;
+
+  --font-display: "Fraunces", serif;
+  --font-body: "Quicksand", sans-serif;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  min-height: 100vh;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.6;
+  position: relative;
+  overflow-x: hidden;
+}
+
+:focus-visible{
+  outline: 2px solid var(--petal-deep);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* =========================================================
+   PÉTALOS CAYENDO (fondo ambiental)
+========================================================= */
+.petals-fall{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.petal{
+  position: absolute;
+  top: -5%;
+  width: 10px;
+  height: 10px;
+  background: var(--petal);
+  border-radius: 60% 0 60% 0;
+  opacity: 0.7;
+  animation-name: caer, mecer;
+  animation-timing-function: linear, ease-in-out;
+  animation-iteration-count: 1, infinite;
+}
+
+@keyframes caer{
+  to{ transform: translateY(110vh); }
+}
+@keyframes mecer{
+  0%, 100%{ margin-left: 0; }
+  50%{ margin-left: 30px; }
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero{
+  position: relative;
+  z-index: 1;
+  padding: 9vh 6vw 6vh;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hero__date{
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  margin: 0 0 1.6rem;
+}
+
+.hero__question{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  color: var(--ink);
+  margin: 0 0 0.6rem;
+  line-height: 1.15;
+}
+
+.hero__asked-by{
+  color: var(--ink-soft);
+  font-size: 1rem;
+  margin: 0 0 3.5rem;
+}
+
+/* ---- ramo ---- */
+.bouquet{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: clamp(0.4rem, 2vw, 1.2rem);
+  flex-wrap: wrap;
+  margin: 0 0 1.8rem;
+}
+
+.flower{
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.4rem;
+  width: 64px;
+  height: 84px;
+  position: relative;
+  transition: transform 0.3s ease, opacity 0.4s ease;
+}
+
+.flower__svg{
+  width: 100%;
+  height: 100%;
+  animation: mecer-flor 3.4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+.flower:nth-child(2n) .flower__svg{ animation-delay: 0.4s; }
+.flower:nth-child(3n) .flower__svg{ animation-delay: 0.8s; }
+
+@keyframes mecer-flor{
+  0%, 100%{ transform: rotate(-3deg); }
+  50%{ transform: rotate(3deg); }
+}
+
+.flower__petal{
+  fill: var(--petal);
+  transition: fill 0.3s ease;
+}
+.flower__center{ fill: var(--petal-deep); }
+.flower__stem{ stroke: var(--leaf); }
+
+.flower:hover:not(.is-picked){ transform: translateY(-4px); }
+
+.flower.is-picked{
+  cursor: default;
+  opacity: 0.35;
+}
+.flower.is-picked .flower__svg{ animation: none; }
+.flower.is-picked .flower__petal{ fill: var(--ink-soft); }
+
+.hero__hint{
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* =========================================================
+   PALABRA REVELADA
+========================================================= */
+.reveal{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding: 2vh 6vw 8vh;
+}
+
+.reveal__card{
+  background: #FFFDF6;
+  border: 1px solid rgba(74,52,35,0.12);
+  border-radius: 18px;
+  padding: 2.4rem 2.6rem;
+  min-width: min(420px, 100%);
+  min-height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 24px 50px -30px rgba(74,52,35,0.35);
+}
+
+.reveal__word{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(1.4rem, 3.4vw, 2rem);
+  color: var(--petal-deep);
+  text-align: center;
+  margin: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* =========================================================
+   FINAL + PERRITA
+========================================================= */
+.final{
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 4vh 6vw 10vh;
+  max-width: 560px;
+  margin: 0 auto;
+  animation: aparecer 0.6s ease;
+}
+
+@keyframes aparecer{
+  from{ opacity: 0; transform: translateY(12px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+.photo-row{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  margin: 0 0 2.4rem;
+}
+
+.photo-frame{
+  width: 150px;
+  background: #FFFDF6;
+  border: 9px solid #FFFDF6;
+  border-radius: 10px;
+  box-shadow: 0 20px 36px -22px rgba(74,52,35,0.45);
+  margin: 0;
+  text-align: center;
+}
+.photo-frame--dog{ transform: rotate(-4deg); }
+.photo-frame--ramo{ transform: rotate(3deg); }
+
+.photo-frame__inner{
+  position: relative;
+  aspect-ratio: 1 / 1;
+  border-radius: 5px;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.photo-frame__img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-frame__placeholder{
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem;
+  text-align: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink-soft);
+  background: rgba(74,52,35,0.05);
+  border: 2px dashed rgba(74,52,35,0.25);
+}
+.photo-frame__img[hidden] + .photo-frame__placeholder{ display: flex; }
+
+.photo-frame__icon{
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+.photo-frame--dog .photo-frame__icon{ color: var(--fur-shadow); }
+.photo-frame--ramo .photo-frame__icon{ color: var(--petal-deep); }
+
+.photo-frame figcaption{
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  margin-top: 0.55rem;
+}
+
+.final__message{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer{
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 2.5rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+#inicioLink{
+  color: var(--petal-deep);
+  text-decoration: none;
+}
